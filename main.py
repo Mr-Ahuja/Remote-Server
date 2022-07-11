@@ -38,8 +38,8 @@ async def send_command(session_id: int, command: Command):
 async def request_command_response(session_id: int):
     if exists("sessions/" + str(session_id) + ".json"):
         command_file = open("sessions/" + str(session_id) + ".json", "r")
-        return { "output" : command_file.readlines() }
-    return { "output" : "" }
+        return { json.load(command_file) }
+    return { "message" : "No Active Command" }
 
 @app.post("/command_response/{session_id}")
 async def request_command_response(session_id: int,command_output : CommandOutput):
