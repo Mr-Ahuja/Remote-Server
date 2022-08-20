@@ -9,10 +9,10 @@ print("Your Session Id is : " + str(session_id))
 while True:
 
     command = input("$ : ")
-    r = requests.post("https://remote-terminal-mrahuja.herokuapp.com/command/"+str(session_id), json = {"command":str(command)})
+    r = requests.post("url"+str(session_id), json = {"command":str(command)})
 
     while True:
-        r = requests.get("https://remote-terminal-mrahuja.herokuapp.com/command/"+str(session_id))
+        r = requests.get("url"+str(session_id))
         response_data = r.json()
         if response_data["output"] != "":
             print(response_data["output"])
