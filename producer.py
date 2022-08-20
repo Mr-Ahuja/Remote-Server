@@ -3,11 +3,11 @@ import requests
 import time
 
 def update_status(session_id, data):
-    r = requests.post("https://remote-terminal-mrahuja.herokuapp.com/command_response/"+str(session_id), json = {"command_output":str(data)})
+    r = requests.post("url"+str(session_id), json = {"command_output":str(data)})
     print(r.json())
 
 while True:
-    r = requests.get("https://remote-terminal-mrahuja.herokuapp.com/get_all_commands")
+    r = requests.get("url")
     data = r.json()
     for session in data["sessions"]:
         try:
