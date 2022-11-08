@@ -2,12 +2,13 @@ import subprocess
 import requests
 import time
 
+server = "https://remote-terminal-mrahuja.herokuapp.com"
 def update_status(session_id, data):
-    r = requests.post("url"+str(session_id), json = {"command_output":str(data)})
+    r = requests.post(server + "/command_response/" +str(session_id), json = {"command_output":str(data)})
     print(r.json())
 
 while True:
-    r = requests.get("url")
+    r = requests.get(server + "/get_all_commands")
     data = r.json()
     for session in data["sessions"]:
         try:
