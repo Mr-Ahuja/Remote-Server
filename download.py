@@ -1,6 +1,7 @@
 import requests
+import sys
 
-url = 'http://127.0.0.1:8000/upload'
-file = {'file': open('data/Sangeeth.jpg', 'rb')}
-resp = requests.post(url=url, files=file) 
-print(resp.json())
+url = 'https://remote-terminal-mrahuja.herokuapp.com/download/' + str(sys.argv[1])
+r = requests.get(url, allow_redirects=True)
+
+open(str(sys.argv[1]), 'wb').write(r.content)

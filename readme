@@ -1,0 +1,12 @@
+If Python is not avalable, you can use simple curl commands to use Upload and Download
+
+Upload
+curl -X 'POST' 'https://remote-terminal-mrahuja.herokuapp.com/upload'   -H 'accept: application/json'   -H 'Content-Type: multipart/form-data'   -F 'file=@test.txt'
+
+Download
+curl https://remote-terminal-mrahuja.herokuapp.com/download/test.txt
+
+Note : Heroku refreshes POD and this is a statefull system, means if Pod is refreshed then data will be lost.
+If you upload anything, Download ASAP
+
+POD refreshment time is not very short 1-2 hrs data will be persisted but can't garantee
